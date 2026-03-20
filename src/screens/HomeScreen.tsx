@@ -27,7 +27,7 @@ export default function HomeScreen({ onNavigate }: Props) {
   return (
     <div className="animate-fade-in">
       {/* Header */}
-      <div className="bg-navy px-5 pt-8 pb-10 rounded-b-3xl">
+      <div className="bg-navy px-5 pt-8 pb-6 rounded-b-3xl">
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-blue-200/50 text-xs mb-0.5">Доброго дня</p>
@@ -60,7 +60,7 @@ export default function HomeScreen({ onNavigate }: Props) {
         </div>
       </div>
 
-      <div className="px-4 -mt-5 space-y-4 pb-4">
+      <div className="px-4 mt-4 space-y-4 pb-4">
         {/* Chat with Manager */}
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
           <div className="flex items-center justify-between px-4 pt-4 pb-2">
