@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, MapPin, Users } from 'lucide-react';
+import { Bus, MapPin, Users } from 'lucide-react';
 import { flights } from '../data/mock';
 import type { Screen, Flight } from '../types';
 
@@ -23,7 +23,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
   return (
     <div className="animate-fade-in">
       <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl">
-        <h1 className="text-xl font-bold text-white mb-4">Рейси</h1>
+        <h1 className="text-xl font-bold text-white mb-4">Поїздки</h1>
         {/* Filters */}
         <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
           {(['all', 'УК→ЄВ', 'ЄВ→УК'] as const).map(d => (
@@ -66,7 +66,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
           <div key={flight.id} className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-start justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Plane size={18} className="text-accent" />
+                <Bus size={18} className="text-accent" />
                 <span className="font-bold text-navy">{flight.city}</span>
               </div>
               <span className="text-xs text-gray-400 font-medium">{flight.date}</span>
@@ -97,8 +97,8 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
         ))}
         {filtered.length === 0 && (
           <div className="text-center py-12 text-gray-400">
-            <Plane size={40} className="mx-auto mb-2 opacity-30" />
-            <p className="text-sm">Рейсів за фільтрами не знайдено</p>
+            <Bus size={40} className="mx-auto mb-2 opacity-30" />
+            <p className="text-sm">Поїздок за фільтрами не знайдено</p>
           </div>
         )}
       </div>

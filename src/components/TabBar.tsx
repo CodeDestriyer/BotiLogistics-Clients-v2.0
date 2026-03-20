@@ -1,4 +1,4 @@
-import { Home, Plane, Package, ClipboardList, MessageCircle } from 'lucide-react';
+import { Home, Bus, Package, ClipboardList, MessageCircle } from 'lucide-react';
 import type { Tab } from '../types';
 
 interface TabBarProps {
@@ -9,7 +9,7 @@ interface TabBarProps {
 
 const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
   { id: 'home', label: 'Головна', icon: Home },
-  { id: 'flights', label: 'Рейси', icon: Plane },
+  { id: 'flights', label: 'Поїздки', icon: Bus },
   { id: 'parcels', label: 'Посилки', icon: Package },
   { id: 'orders', label: 'Замовлення', icon: ClipboardList },
   { id: 'chat', label: 'Чат', icon: MessageCircle },

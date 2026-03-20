@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, Package, ExternalLink } from 'lucide-react';
+import { Bus, Package, ExternalLink } from 'lucide-react';
 import StatusBadge from '../components/StatusBadge';
 
 export default function OrdersScreen() {
@@ -18,7 +18,7 @@ export default function OrdersScreen() {
                 tab === t ? 'bg-white text-navy' : 'bg-white/10 text-blue-200/70'
               }`}
             >
-              {t === 'flights' ? 'Рейси' : 'Посилки'}
+              {t === 'flights' ? 'Поїздки' : 'Посилки'}
             </button>
           ))}
         </div>
@@ -30,7 +30,7 @@ export default function OrdersScreen() {
             <div className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Plane size={18} className="text-accent" />
+                  <Bus size={18} className="text-accent" />
                   <span className="font-bold text-navy text-sm">Цюріх</span>
                 </div>
                 <span className="text-xs text-gray-400">15.06.2025</span>
@@ -41,7 +41,7 @@ export default function OrdersScreen() {
             <div className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Plane size={18} className="text-navy" />
+                  <Bus size={18} className="text-navy" />
                   <span className="font-bold text-navy text-sm">Женева</span>
                 </div>
                 <span className="text-xs text-gray-400">01.05.2025</span>
@@ -52,7 +52,7 @@ export default function OrdersScreen() {
             <div className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Plane size={18} className="text-navy" />
+                  <Bus size={18} className="text-navy" />
                   <span className="font-bold text-navy text-sm">Берлін</span>
                 </div>
                 <span className="text-xs text-gray-400">12.03.2025</span>
