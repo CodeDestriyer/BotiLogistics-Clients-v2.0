@@ -26,47 +26,47 @@ export default function HomeScreen({ onNavigate }: Props) {
 
       {/* 4 Action Cards */}
       <div className="px-4 mt-5 space-y-3 pb-4">
-        {/* Row 1 — Main actions (bigger) */}
+        {/* Row 1 — Main actions (tall, prominent) */}
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => onNavigate('flights')}
-            className="bg-white rounded-2xl shadow-sm p-5 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[140px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-6 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[200px]"
           >
-            <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
-              <Bus size={24} className="text-accent" />
+            <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
+              <Bus size={30} className="text-accent" />
             </div>
-            <div className="mt-auto pt-3">
-              <p className="text-navy font-bold text-sm leading-tight">Забронювати поїздку</p>
-              <p className="text-gray-400 text-[11px] mt-1">Пасажирські рейси</p>
+            <div className="mt-auto pt-4">
+              <p className="text-navy font-extrabold text-base leading-tight">Забронювати поїздку</p>
+              <p className="text-gray-400 text-xs mt-1.5">Пасажирські рейси</p>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('parcels')}
-            className="bg-white rounded-2xl shadow-sm p-5 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[140px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-6 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[200px]"
           >
-            <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
-              <Package size={24} className="text-accent" />
+            <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
+              <Package size={30} className="text-accent" />
             </div>
-            <div className="mt-auto pt-3">
-              <p className="text-navy font-bold text-sm leading-tight">Відправити посилку</p>
-              <p className="text-gray-400 text-[11px] mt-1">Доставка УК ↔ ЄВ</p>
+            <div className="mt-auto pt-4">
+              <p className="text-navy font-extrabold text-base leading-tight">Відправити посилку</p>
+              <p className="text-gray-400 text-xs mt-1.5">Доставка УК ↔ ЄВ</p>
             </div>
           </button>
         </div>
 
-        {/* Row 2 — Secondary actions (compact, square-ish) */}
+        {/* Row 2 — Secondary actions (low, wide rectangles) */}
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => onNavigate('chat')}
-            className="bg-white rounded-2xl shadow-sm p-4 text-left active:scale-[0.97] transition-transform flex flex-col items-center justify-center min-h-[110px] gap-2"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center">
+            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
               <MessageCircle size={22} className="text-accent" />
             </div>
-            <div className="text-center">
+            <div className="text-left min-w-0">
               <p className="text-navy font-bold text-xs leading-tight">Чат з менеджером</p>
-              <div className="flex items-center justify-center gap-1 mt-1">
+              <div className="flex items-center gap-1 mt-1">
                 <span className="w-1.5 h-1.5 bg-status-confirmed rounded-full" />
                 <span className="text-[10px] text-gray-400">Онлайн</span>
               </div>
@@ -75,12 +75,12 @@ export default function HomeScreen({ onNavigate }: Props) {
 
           <button
             onClick={() => onNavigate('tariffs')}
-            className="bg-white rounded-2xl shadow-sm p-4 text-left active:scale-[0.97] transition-transform flex flex-col items-center justify-center min-h-[110px] gap-2"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center">
+            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
               <Tag size={22} className="text-accent" />
             </div>
-            <div className="text-center">
+            <div className="text-left min-w-0">
               <p className="text-navy font-bold text-xs leading-tight">Тарифи та ціни</p>
               <p className="text-gray-400 text-[10px] mt-1">від 5€/кг</p>
             </div>
