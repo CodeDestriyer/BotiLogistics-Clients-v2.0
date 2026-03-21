@@ -25,64 +25,64 @@ export default function HomeScreen({ onNavigate }: Props) {
       </div>
 
       {/* 4 Action Cards */}
-      <div className="px-4 mt-5 space-y-3 pb-4">
+      <div className="px-4 mt-5 space-y-4 pb-4">
         {/* Row 1 — Main actions (tall, prominent) */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           <button
             onClick={() => onNavigate('flights')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-6 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[200px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px]"
           >
-            <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
-              <Bus size={30} className="text-accent" />
+            <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+              <Bus size={34} className="text-accent" />
             </div>
-            <div className="mt-auto pt-4">
-              <p className="text-navy font-extrabold text-base leading-tight">Забронювати поїздку</p>
-              <p className="text-gray-400 text-xs mt-1.5">Пасажирські рейси</p>
+            <div className="mt-auto pt-5">
+              <p className="text-navy font-extrabold text-lg leading-tight">Забронювати поїздку</p>
+              <p className="text-gray-400 text-sm mt-2">Пасажирські рейси</p>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('parcels')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-6 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[200px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px]"
           >
-            <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
-              <Package size={30} className="text-accent" />
+            <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+              <Package size={34} className="text-accent" />
             </div>
-            <div className="mt-auto pt-4">
-              <p className="text-navy font-extrabold text-base leading-tight">Відправити посилку</p>
-              <p className="text-gray-400 text-xs mt-1.5">Доставка УК ↔ ЄВ</p>
+            <div className="mt-auto pt-5">
+              <p className="text-navy font-extrabold text-lg leading-tight">Відправити посилку</p>
+              <p className="text-gray-400 text-sm mt-2">Доставка УК ↔ ЄВ</p>
             </div>
           </button>
         </div>
 
-        {/* Row 2 — Secondary actions (low, wide rectangles) */}
-        <div className="grid grid-cols-2 gap-3">
+        {/* Row 2 — Secondary actions */}
+        <div className="grid grid-cols-2 gap-4">
           <button
             onClick={() => onNavigate('chat')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-5 py-5 active:scale-[0.97] transition-transform flex items-center gap-4 min-h-[100px]"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <MessageCircle size={22} className="text-accent" />
+            <div className="w-13 h-13 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+              <MessageCircle size={26} className="text-accent" />
             </div>
             <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-xs leading-tight">Чат з менеджером</p>
-              <div className="flex items-center gap-1 mt-1">
-                <span className="w-1.5 h-1.5 bg-status-confirmed rounded-full" />
-                <span className="text-[10px] text-gray-400">Онлайн</span>
+              <p className="text-navy font-bold text-sm leading-tight">Чат з менеджером</p>
+              <div className="flex items-center gap-1 mt-1.5">
+                <span className="w-2 h-2 bg-status-confirmed rounded-full" />
+                <span className="text-xs text-gray-400">Онлайн</span>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('tariffs')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-5 py-5 active:scale-[0.97] transition-transform flex items-center gap-4 min-h-[100px]"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <Tag size={22} className="text-accent" />
+            <div className="w-13 h-13 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+              <Tag size={26} className="text-accent" />
             </div>
             <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-xs leading-tight">Тарифи та ціни</p>
-              <p className="text-gray-400 text-[10px] mt-1">від 5€/кг</p>
+              <p className="text-navy font-bold text-sm leading-tight">Тарифи та ціни</p>
+              <p className="text-gray-400 text-xs mt-1.5">від 5€/кг</p>
             </div>
           </button>
         </div>
