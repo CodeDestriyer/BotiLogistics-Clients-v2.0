@@ -59,30 +59,30 @@ export default function HomeScreen({ onNavigate }: Props) {
         <div className="grid grid-cols-2 gap-4">
           <button
             onClick={() => onNavigate('chat')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-5 py-5 active:scale-[0.97] transition-transform flex items-center gap-4 min-h-[100px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px]"
           >
-            <div className="w-13 h-13 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <MessageCircle size={26} className="text-accent" />
+            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+              <MessageCircle size={22} className="text-accent" />
             </div>
             <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-sm leading-tight">Чат з менеджером</p>
-              <div className="flex items-center gap-1 mt-1.5">
-                <span className="w-2 h-2 bg-status-confirmed rounded-full" />
-                <span className="text-xs text-gray-400">Онлайн</span>
+              <p className="text-navy font-bold text-xs sm:text-sm leading-tight">Чат з менеджером</p>
+              <div className="flex items-center gap-1 mt-1">
+                <span className="w-1.5 h-1.5 bg-status-confirmed rounded-full" />
+                <span className="text-[10px] sm:text-xs text-gray-400">Онлайн</span>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('tariffs')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-5 py-5 active:scale-[0.97] transition-transform flex items-center gap-4 min-h-[100px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px]"
           >
-            <div className="w-13 h-13 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <Tag size={26} className="text-accent" />
+            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+              <Tag size={22} className="text-accent" />
             </div>
             <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-sm leading-tight">Тарифи та ціни</p>
-              <p className="text-gray-400 text-xs mt-1.5">від 5€/кг</p>
+              <p className="text-navy font-bold text-xs sm:text-sm leading-tight">Тарифи та ціни</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs mt-1">від 5€/кг</p>
             </div>
           </button>
         </div>
