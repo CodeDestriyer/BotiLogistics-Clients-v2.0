@@ -1,20 +1,91 @@
-import { useState } from 'react';
-import { Eye, EyeOff, Truck } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Truck } from 'lucide-react';
 
 interface Props {
   onLogin: () => void;
-  onRegister: () => void;
 }
 
-export default function LoginScreen({ onLogin, onRegister }: Props) {
+const DEMO_PHONE = '+380951111111';
+const DEMO_PASSWORD = 'mypassword1';
+const TYPE_SPEED = 70;       // ms per character
+const PAUSE_BETWEEN = 400;   // pause between fields
+const BUTTON_DELAY = 500;    // pause before button press
+const BUTTON_HOLD = 600;     // how long button stays "pressed"
+
+export default function LoginScreen({ onLogin }: Props) {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [showPw, setShowPw] = useState(false);
+  const [phoneFocused, setPhoneFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onLogin();
-  };
+  useEffect(() => {
+    // Reset state for each mount
+    setPhone('');
+    setPassword('');
+    setPhoneFocused(false);
+    setPasswordFocused(false);
+    setButtonPressed(false);
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const addTimer = (fn: () => void, delay: number) => {
+      const t = setTimeout(fn, delay);
+      timers.push(t);
+      return t;
+    };
+
+    let elapsed = 300; // initial delay
+
+    // Focus phone field
+    addTimer(() => setPhoneFocused(true), elapsed);
+    elapsed += 200;
+
+    // Type phone number
+    for (let i = 0; i < DEMO_PHONE.length; i++) {
+      const chars = DEMO_PHONE.slice(0, i + 1);
+      addTimer(() => setPhone(chars), elapsed);
+      elapsed += TYPE_SPEED;
+    }
+
+    // Unfocus phone, pause, focus password
+    elapsed += PAUSE_BETWEEN;
+    addTimer(() => {
+      setPhoneFocused(false);
+      setPasswordFocused(true);
+    }, elapsed);
+    elapsed += 200;
+
+    // Type password
+    for (let i = 0; i < DEMO_PASSWORD.length; i++) {
+      const chars = DEMO_PASSWORD.slice(0, i + 1);
+      addTimer(() => setPassword(chars), elapsed);
+      elapsed += TYPE_SPEED;
+    }
+
+    // Unfocus password
+    elapsed += PAUSE_BETWEEN;
+    addTimer(() => setPasswordFocused(false), elapsed);
+
+    // Press button
+    elapsed += BUTTON_DELAY;
+    addTimer(() => setButtonPressed(true), elapsed);
+
+    // Release button and navigate
+    elapsed += BUTTON_HOLD;
+    addTimer(() => {
+      setButtonPressed(false);
+      onLogin();
+    }, elapsed);
+
+    timerRef.current = timers;
+    return () => timers.forEach(clearTimeout);
+  }, [onLogin]);
+
+  const inputBase =
+    'w-full px-4 py-3.5 bg-white/10 backdrop-blur border rounded-xl text-white placeholder-blue-200/50 outline-none transition-all duration-200';
+  const focusRing = 'border-accent ring-1 ring-accent';
+  const noFocus = 'border-white/20';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy to-navy-dark flex flex-col items-center justify-center px-6">
@@ -27,46 +98,34 @@ export default function LoginScreen({ onLogin, onRegister }: Props) {
           <p className="text-blue-200/70 text-sm mt-1">Логістика без кордонів</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-4">
           <div>
             <input
               type="tel"
               placeholder="Телефон"
               value={phone}
-              onChange={e => setPhone(e.target.value)}
-              className="w-full px-4 py-3.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-blue-200/50 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition"
+              readOnly
+              className={`${inputBase} ${phoneFocused ? focusRing : noFocus}`}
             />
           </div>
-          <div className="relative">
+          <div>
             <input
-              type={showPw ? 'text' : 'password'}
+              type="text"
               placeholder="Пароль"
               value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="w-full px-4 py-3.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-blue-200/50 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition pr-12"
+              readOnly
+              className={`${inputBase} ${passwordFocused ? focusRing : noFocus}`}
             />
-            <button
-              type="button"
-              onClick={() => setShowPw(!showPw)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-200/50"
-            >
-              {showPw ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
           </div>
           <button
-            type="submit"
-            className="w-full py-3.5 bg-accent text-white font-bold rounded-xl text-base active:scale-[0.97] transition-transform shadow-lg shadow-accent/30"
+            type="button"
+            className={`w-full py-3.5 bg-accent text-white font-bold rounded-xl text-base shadow-lg shadow-accent/30 transition-all duration-150 ${
+              buttonPressed ? 'scale-[0.95] brightness-90 shadow-accent/50' : 'scale-100'
+            }`}
           >
             Увійти
           </button>
-        </form>
-
-        <p className="text-center mt-6 text-blue-200/60 text-sm">
-          Немає акаунту?{' '}
-          <button onClick={onRegister} className="text-accent font-semibold underline underline-offset-2">
-            Зареєструватись
-          </button>
-        </p>
+        </div>
       </div>
     </div>
   );

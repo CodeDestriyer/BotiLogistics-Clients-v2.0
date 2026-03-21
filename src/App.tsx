@@ -3,7 +3,6 @@ import type { Screen, Tab, Flight } from './types';
 import TabBar from './components/TabBar';
 import Skeleton from './components/Skeleton';
 import LoginScreen from './screens/LoginScreen';
-import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen from './screens/HomeScreen';
 import FlightsScreen from './screens/FlightsScreen';
 import BookingScreen from './screens/BookingScreen';
@@ -56,13 +55,12 @@ function App() {
 
   const clearChatBadge = useCallback(() => setChatBadge(0), []);
 
-  const showTabBar = screen !== 'login' && screen !== 'register';
+  const showTabBar = screen !== 'login';
 
   const renderScreen = () => {
     if (loading && tabScreens.includes(screen as Tab)) return <Skeleton />;
     switch (screen) {
-      case 'login': return <LoginScreen onLogin={handleLogin} onRegister={() => setScreen('register')} />;
-      case 'register': return <RegisterScreen onComplete={handleLogin} onBack={() => setScreen('login')} />;
+      case 'login': return <LoginScreen onLogin={handleLogin} />;
       case 'home': return <HomeScreen onNavigate={navigate} />;
       case 'flights': return <FlightsScreen onNavigate={navigate} onSelectFlight={setSelectedFlight} />;
       case 'booking': return selectedFlight ? <BookingScreen flight={selectedFlight} onNavigate={navigate} /> : null;

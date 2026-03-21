@@ -1,4 +1,4 @@
-export type Screen = 'login' | 'register' | 'home' | 'flights' | 'parcels' | 'orders' | 'chat' | 'tariffs' | 'profile' | 'booking' | 'parcel-ua-eu' | 'parcel-eu-ua';
+export type Screen = 'login' | 'home' | 'flights' | 'parcels' | 'orders' | 'chat' | 'tariffs' | 'profile' | 'booking' | 'parcel-ua-eu' | 'parcel-eu-ua';
 
 export type Tab = 'home' | 'flights' | 'parcels' | 'orders' | 'chat';
 
