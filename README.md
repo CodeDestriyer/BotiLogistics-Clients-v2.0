@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# BOTILOGISTICS *beta*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Клієнтський додаток логістичної компанії **BOTILOGISTICS** — бронювання пасажирських рейсів та відправка посилок між Україною та Європою.
 
-Currently, two official plugins are available:
+## Стек технологій
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript 5.9**
+- **Vite 8** (збірка + dev-сервер)
+- **Tailwind CSS 4** (утилітарні стилі)
+- **Lucide React** (іконки)
+- Adaptive layout: mobile-first + desktop sidebar
 
-## React Compiler
+## Запуск
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev        # dev-сервер (Vite HMR)
+npm run build      # production build (tsc + vite build)
+npm run preview    # preview production build
+npm run lint       # ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Структура проекту
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── App.tsx                   # Головний компонент, роутинг між екранами
+├── index.css                 # Tailwind imports + кастомні кольори
+├── main.tsx                  # Entry point
+│
+├── types/
+│   └── index.ts              # Screen, Tab, OrderStatus, Flight, ChatMessage
+│
+├── data/
+│   └── mock.ts               # Mock дані: рейси, чат, тарифи, типи вмісту
+│
+├── components/
+│   ├── TabBar.tsx             # Мобільна нижня навігація + desktop sidebar
+│   ├── Modal.tsx              # Модальне вікно (підтвердження замовлень)
+│   ├── StatusBadge.tsx        # Бейдж статусу замовлення
+│   └── Skeleton.tsx           # Skeleton-лоадер при завантаженні
+│
+└── screens/
+    ├── LoginScreen.tsx        # Анімований login з автозаповненням demo-даних
+    ├── HomeScreen.tsx         # Головна — 4 action-картки
+    ├── FlightsScreen.tsx      # Список рейсів з фільтрами (напрямок + місто)
+    ├── BookingScreen.tsx      # Форма бронювання рейсу
+    ├── ParcelsScreen.tsx      # Вибір напрямку посилки
+    ├── ParcelUaEuScreen.tsx   # Форма: посилка Україна → Європа (ТТН)
+    ├── ParcelEuUaScreen.tsx   # Форма: посилка Європа → Україна (кур'єр)
+    ├── OrdersScreen.tsx       # Мої замовлення (поїздки + посилки)
+    ├── ChatScreen.tsx         # Чат з менеджером (mock)
+    ├── TariffsScreen.tsx      # Тарифи: пасажири, посилки, контакти
+    └── ProfileScreen.tsx      # Профіль користувача
+```
+
+## Навігація
+
+- **Mobile**: нижній TabBar (5 табів: Головна, Поїздки, Посилки, Замовлення, Чат)
+- **Desktop (md+)**: фіксований sidebar зліва (w-56), контент справа
+
+Роутинг реалізований через `useState<Screen>` в `App.tsx` — без react-router.
+
+## Основні екрани
+
+| Екран | Опис |
+|-------|------|
+| Login | Анімований demo-вхід (автозаповнення телефону + пароля) |
+| Home | 4 картки: Поїздки, Посилки, Чат, Тарифи |
+| Flights | Фільтри (Україна → Європа / Європа → Україна + місто), картки рейсів |
+| Booking | Форма бронювання обраного рейсу |
+| Parcels | Вибір: Україна → Європа або Європа → Україна |
+| ParcelUaEu | Реєстрація ТТН Нової Пошти |
+| ParcelEuUa | Виклик кур'єра по Європі |
+| Orders | Мої замовлення з відстеженням статусу |
+| Chat | Чат з менеджером (mock повідомлення) |
+| Tariffs | Ціни на пасажирів та посилки, контакти |
+| Profile | Профіль користувача |
+
+## Кольори (Tailwind custom)
+
+- `navy` / `navy-dark` — основний темний
+- `accent` — помаранчевий акцент
+- `status-*` — кольори статусів (confirmed, transit, done, cancelled)
+
+## Особливості
+
+- **Mobile-first**: весь UI оптимізований для телефонів, потім адаптується для desktop
+- **Skeleton loader**: при першому завантаженні показується анімований скелетон
+- **Анімований login**: demo-режим з автоматичним друком логіну/пароля
+- **Responsive cards**: 2 колонки на мобільних, 4 на desktop (Home), 2-3 колонки grid на інших
+- **Брендинг**: BOTILOGISTICS *beta* — у header, sidebar та на login

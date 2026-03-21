@@ -39,7 +39,7 @@ export default function ParcelUaEuScreen({ onNavigate }: Props) {
         <button onClick={() => onNavigate('parcels')} className="text-blue-200/60 flex items-center gap-1 mb-3 text-sm">
           <ArrowLeft size={16} /> Назад
         </button>
-        <h1 className="text-lg font-bold text-white">Посилка УК → ЄВ</h1>
+        <h1 className="text-lg font-bold text-white">Посилка Україна → Європа</h1>
         <p className="text-blue-200/60 text-xs mt-1">Реєстрація ТТН Нової Пошти</p>
       </div>
 

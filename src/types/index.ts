@@ -8,7 +8,7 @@ export interface Flight {
   id: number;
   city: string;
   date: string;
-  direction: 'УК→ЄВ' | 'ЄВ→УК';
+  direction: 'UA → EU' | 'EU → UA';
   route: string;
   seats: number;
   price: number;

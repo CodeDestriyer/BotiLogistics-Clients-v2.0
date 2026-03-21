@@ -1,11 +1,11 @@
 import type { Flight, ChatMessage } from '../types';
 
 export const flights: Flight[] = [
-  { id: 1, city: 'Цюріх', date: '20 червня', direction: 'УК→ЄВ', route: 'Київ → Цюріх', seats: 14, price: 80 },
-  { id: 2, city: 'Женева', date: '25 червня', direction: 'УК→ЄВ', route: 'Київ → Женева', seats: 8, price: 90 },
-  { id: 3, city: 'Берлін', date: '28 червня', direction: 'УК→ЄВ', route: 'Київ → Берлін', seats: 20, price: 70 },
-  { id: 4, city: 'Цюріх', date: '02 липня', direction: 'ЄВ→УК', route: 'Цюріх → Київ', seats: 6, price: 85 },
-  { id: 5, city: 'Амстердам', date: '05 липня', direction: 'УК→ЄВ', route: 'Київ → Амстердам', seats: 12, price: 95 },
+  { id: 1, city: 'Цюріх', date: '20 червня', direction: 'UA → EU', route: 'Київ → Цюріх', seats: 14, price: 80 },
+  { id: 2, city: 'Женева', date: '25 червня', direction: 'UA → EU', route: 'Київ → Женева', seats: 8, price: 90 },
+  { id: 3, city: 'Берлін', date: '28 червня', direction: 'UA → EU', route: 'Київ → Берлін', seats: 20, price: 70 },
+  { id: 4, city: 'Цюріх', date: '02 липня', direction: 'EU → UA', route: 'Цюріх → Київ', seats: 6, price: 85 },
+  { id: 5, city: 'Амстердам', date: '05 липня', direction: 'UA → EU', route: 'Київ → Амстердам', seats: 12, price: 95 },
 ];
 
 export const chatMessages: ChatMessage[] = [

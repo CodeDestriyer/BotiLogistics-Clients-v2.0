@@ -69,7 +69,7 @@ export default function OrdersScreen() {
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Package size={18} className="text-accent" />
-                  <span className="font-bold text-navy text-sm">УК→ЄВ</span>
+                  <span className="font-bold text-navy text-sm">Україна → Європа</span>
                 </div>
                 <span className="text-xs text-gray-400">10.06.2025</span>
               </div>
@@ -90,7 +90,7 @@ export default function OrdersScreen() {
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Package size={18} className="text-navy" />
-                  <span className="font-bold text-navy text-sm">ЄВ→УК</span>
+                  <span className="font-bold text-navy text-sm">Європа → Україна</span>
                 </div>
                 <span className="text-xs text-gray-400">25.05.2025</span>
               </div>
@@ -101,7 +101,7 @@ export default function OrdersScreen() {
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Package size={18} className="text-accent" />
-                  <span className="font-bold text-navy text-sm">УК→ЄВ</span>
+                  <span className="font-bold text-navy text-sm">Україна → Європа</span>
                 </div>
                 <span className="text-xs text-gray-400">02.04.2025</span>
               </div>

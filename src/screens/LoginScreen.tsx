@@ -94,7 +94,7 @@ export default function LoginScreen({ onLogin }: Props) {
           <div className="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-accent/30">
             <Truck size={40} className="text-white" />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">EscoExpress</h1>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">BOTILOGISTICS <em className="font-normal text-white/70">beta</em></h1>
           <p className="text-blue-200/70 text-sm mt-1">Логістика без кордонів</p>
         </div>
 

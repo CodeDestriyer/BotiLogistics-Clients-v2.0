@@ -12,7 +12,7 @@ export default function HomeScreen({ onNavigate }: Props) {
       <div className="bg-navy px-5 pt-8 pb-6 rounded-b-3xl md:rounded-none md:px-10 md:pt-10 md:pb-8">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-200/50 text-xs md:text-sm mb-0.5">Доброго дня</p>
+            <p className="text-white/90 text-sm md:text-base font-bold tracking-wide mb-1">BOTILOGISTICS <em className="font-normal text-white/60">beta</em></p>
             <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Привіт, Олена! 👋</h1>
           </div>
           <button
@@ -26,64 +26,63 @@ export default function HomeScreen({ onNavigate }: Props) {
 
       {/* 4 Action Cards */}
       <div className="px-4 mt-5 space-y-4 pb-4 md:px-10 md:mt-8">
-        {/* All cards — 2 cols mobile, 2 cols desktop (big) */}
-        <div className="grid grid-cols-2 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
           <button
             onClick={() => onNavigate('flights')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[340px] md:p-10 md:hover:shadow-lg md:hover:border-accent md:transition-all"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[220px] md:p-6 md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 md:w-14 md:h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
               <Bus size={34} className="text-accent md:hidden" />
-              <Bus size={44} className="text-accent hidden md:block" />
+              <Bus size={28} className="text-accent hidden md:block" />
             </div>
-            <div className="mt-auto pt-5">
-              <p className="text-navy font-extrabold text-lg md:text-2xl leading-tight">Забронювати поїздку</p>
-              <p className="text-gray-400 text-sm md:text-base mt-2">Пасажирські рейси</p>
+            <div className="mt-auto pt-5 md:pt-4">
+              <p className="text-navy font-extrabold text-lg md:text-base leading-tight">Забронювати поїздку</p>
+              <p className="text-gray-400 text-sm md:text-xs mt-2 md:mt-1">Пасажирські рейси</p>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('parcels')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[340px] md:p-10 md:hover:shadow-lg md:hover:border-accent md:transition-all"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[220px] md:p-6 md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-accent/10 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 md:w-14 md:h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
               <Package size={34} className="text-accent md:hidden" />
-              <Package size={44} className="text-accent hidden md:block" />
+              <Package size={28} className="text-accent hidden md:block" />
             </div>
-            <div className="mt-auto pt-5">
-              <p className="text-navy font-extrabold text-lg md:text-2xl leading-tight">Відправити посилку</p>
-              <p className="text-gray-400 text-sm md:text-base mt-2">Доставка УК ↔ ЄВ</p>
+            <div className="mt-auto pt-5 md:pt-4">
+              <p className="text-navy font-extrabold text-lg md:text-base leading-tight">Відправити посилку</p>
+              <p className="text-gray-400 text-sm md:text-xs mt-2 md:mt-1">Україна ⇄ Європа</p>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('chat')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-10 md:min-h-[340px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-6 md:min-h-[220px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-11 h-11 md:w-20 md:h-20 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 md:w-14 md:h-14 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
               <MessageCircle size={22} className="text-accent md:hidden" />
-              <MessageCircle size={44} className="text-accent hidden md:block" />
+              <MessageCircle size={28} className="text-accent hidden md:block" />
             </div>
-            <div className="text-left min-w-0 md:mt-auto md:pt-5">
-              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-2xl leading-tight">Чат з менеджером</p>
-              <div className="flex items-center gap-1 mt-1 md:mt-2">
+            <div className="text-left min-w-0 md:mt-auto md:pt-4">
+              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-base leading-tight">Чат з менеджером</p>
+              <div className="flex items-center gap-1 mt-1 md:mt-1">
                 <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-status-confirmed rounded-full" />
-                <span className="text-[10px] sm:text-xs md:text-sm text-gray-400">Онлайн</span>
+                <span className="text-[10px] sm:text-xs md:text-xs text-gray-400">Онлайн</span>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('tariffs')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-10 md:min-h-[340px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-6 md:min-h-[220px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-11 h-11 md:w-20 md:h-20 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 md:w-14 md:h-14 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
               <Tag size={22} className="text-accent md:hidden" />
-              <Tag size={44} className="text-accent hidden md:block" />
+              <Tag size={28} className="text-accent hidden md:block" />
             </div>
-            <div className="text-left min-w-0 md:mt-auto md:pt-5">
-              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-2xl leading-tight">Тарифи та ціни</p>
-              <p className="text-gray-400 text-[10px] sm:text-xs md:text-base mt-1 md:mt-2">від 5€/кг</p>
+            <div className="text-left min-w-0 md:mt-auto md:pt-4">
+              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-base leading-tight">Тарифи та ціни</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-xs mt-1 md:mt-1">від 5€/кг</p>
             </div>
           </button>
         </div>

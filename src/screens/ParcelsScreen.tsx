@@ -24,7 +24,7 @@ export default function ParcelsScreen({ onNavigate }: Props) {
             <Package size={24} className="text-accent" />
           </div>
           <div className="flex-1">
-            <p className="font-bold text-navy text-base">УК → ЄВ</p>
+            <p className="font-bold text-navy text-base">Україна → Європа</p>
             <p className="text-xs text-gray-400 mt-0.5">Реєстрація ТТН Нової Пошти</p>
           </div>
           <ArrowRight size={18} className="text-gray-300" />
@@ -38,7 +38,7 @@ export default function ParcelsScreen({ onNavigate }: Props) {
             <Package size={24} className="text-navy" />
           </div>
           <div className="flex-1">
-            <p className="font-bold text-navy text-base">ЄВ → УК</p>
+            <p className="font-bold text-navy text-base">Європа → Україна</p>
             <p className="text-xs text-gray-400 mt-0.5">Виклик кур'єра по Європі</p>
           </div>
           <ArrowRight size={18} className="text-gray-300" />

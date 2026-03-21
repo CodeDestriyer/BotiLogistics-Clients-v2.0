@@ -43,7 +43,7 @@ export default function TariffsScreen({ onNavigate }: Props) {
 
         {/* Parcels UA→EU */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
-          <h2 className="text-base font-bold text-navy mb-2">Посилки УК → ЄВ</h2>
+          <h2 className="text-base font-bold text-navy mb-2">Посилки Україна → Європа</h2>
           <div className="space-y-1.5 text-sm text-gray-600">
             <p>Ціна за кг — <span className="font-semibold text-navy">від 5€</span></p>
             <p>Мінімальна вага — <span className="font-semibold text-navy">1 кг</span></p>
@@ -53,7 +53,7 @@ export default function TariffsScreen({ onNavigate }: Props) {
 
         {/* Parcels EU→UA */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
-          <h2 className="text-base font-bold text-navy mb-2">Посилки ЄВ → УК</h2>
+          <h2 className="text-base font-bold text-navy mb-2">Посилки Європа → Україна</h2>
           <div className="space-y-1.5 text-sm text-gray-600">
             <p>Виклик кур'єра — <span className="font-semibold text-navy">від 10€</span></p>
             <p className="text-xs text-gray-400">Умови доставки: уточнюйте у менеджера</p>

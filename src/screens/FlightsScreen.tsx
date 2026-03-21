@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
-  const [direction, setDirection] = useState<'all' | 'УК→ЄВ' | 'ЄВ→УК'>('all');
+  const [direction, setDirection] = useState<'all' | 'UA → EU' | 'EU → UA'>('all');
   const [city, setCity] = useState<string>('all');
 
   const filtered = flights.filter(f => {
@@ -27,7 +27,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
         <h1 className="text-xl md:text-2xl font-bold text-white mb-4">Поїздки</h1>
         {/* Filters */}
         <div className="flex gap-2 mb-3 overflow-x-auto md:overflow-visible md:flex-wrap pb-1">
-          {(['all', 'УК→ЄВ', 'ЄВ→УК'] as const).map(d => (
+          {(['all', 'UA → EU', 'EU → UA'] as const).map(d => (
             <button
               key={d}
               onClick={() => setDirection(d)}
@@ -35,7 +35,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
                 direction === d ? 'bg-accent text-white' : 'bg-white/10 text-blue-200/70'
               }`}
             >
-              {d === 'all' ? 'Всі' : d}
+              {d === 'all' ? 'Всі' : d === 'UA → EU' ? 'Україна → Європа' : 'Європа → Україна'}
             </button>
           ))}
         </div>
@@ -81,7 +81,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
               <Users size={13} className="text-status-confirmed" />
               <span className="text-status-confirmed font-semibold">{flight.seats} місць</span>
               <span className="text-gray-300 mx-1">·</span>
-              <span className="text-gray-500">{flight.direction}</span>
+              <span className="text-gray-500">{flight.direction === 'UA → EU' ? 'Україна → Європа' : 'Європа → Україна'}</span>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-navy font-bold">від {flight.price}€</p>

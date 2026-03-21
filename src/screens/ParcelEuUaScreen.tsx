@@ -39,14 +39,14 @@ export default function ParcelEuUaScreen({ onNavigate }: Props) {
         <button onClick={() => onNavigate('parcels')} className="text-blue-200/60 flex items-center gap-1 mb-3 text-sm">
           <ArrowLeft size={16} /> Назад
         </button>
-        <h1 className="text-lg font-bold text-white">Посилка ЄВ → УК</h1>
+        <h1 className="text-lg font-bold text-white">Посилка Європа → Україна</h1>
         <p className="text-blue-200/60 text-xs mt-1">Виклик кур'єра по Європі</p>
       </div>
 
       <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-2xl md:mx-auto md:mt-6">
         <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
           <input placeholder="ПІБ відправника *" value={form.senderName} onChange={e => update('senderName', e.target.value)} className={inputCls('senderName')} />
-          <input placeholder="Адреса відправки (ЄВ) *" value={form.senderAddr} onChange={e => update('senderAddr', e.target.value)} className={inputCls('senderAddr')} />
+          <input placeholder="Адреса відправки (Європа) *" value={form.senderAddr} onChange={e => update('senderAddr', e.target.value)} className={inputCls('senderAddr')} />
           <input placeholder="ПІБ отримувача *" value={form.name} onChange={e => update('name', e.target.value)} className={inputCls('name')} />
           <input placeholder="Телефон отримувача *" type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} className={inputCls('phone')} />
           <input placeholder="Місто НП в Україні *" value={form.city} onChange={e => update('city', e.target.value)} className={inputCls('city')} />
