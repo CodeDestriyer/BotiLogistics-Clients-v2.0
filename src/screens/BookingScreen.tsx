@@ -46,7 +46,7 @@ export default function BookingScreen({ flight, onNavigate }: Props) {
         </h1>
       </div>
 
-      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-xl md:mx-auto md:mt-6">
+      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-2xl md:mx-auto md:mt-6">
         <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
           <input placeholder="ПІБ пасажира *" value={form.name} onChange={e => update('name', e.target.value)} className={inputCls('name')} />
           <input placeholder="Телефон *" type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} className={inputCls('phone')} />

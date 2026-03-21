@@ -76,7 +76,7 @@ function App() {
   };
 
   return (
-    <div className={`mx-auto min-h-screen bg-slate-100 relative max-w-[480px] ${showTabBar ? 'md:max-w-none md:ml-56' : ''}`}>
+    <div className={`mx-auto min-h-screen relative ${showTabBar ? 'max-w-[480px] md:max-w-none md:ml-56 bg-slate-100' : 'max-w-none'}`}>
       <div className={showTabBar ? 'pb-16 md:pb-0' : ''}>
         {renderScreen()}
       </div>

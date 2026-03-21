@@ -28,7 +28,7 @@ export default function ProfileScreen({ onNavigate, onLogout }: Props) {
         </div>
       </div>
 
-      <div className="px-4 -mt-4 pb-6 space-y-3 md:max-w-lg md:mx-auto md:mt-6">
+      <div className="px-4 -mt-4 pb-6 space-y-3 md:max-w-2xl md:mx-auto md:mt-6">
         {/* Debts */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <div className="flex items-center gap-3">

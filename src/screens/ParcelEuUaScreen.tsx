@@ -43,7 +43,7 @@ export default function ParcelEuUaScreen({ onNavigate }: Props) {
         <p className="text-blue-200/60 text-xs mt-1">Виклик кур'єра по Європі</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-xl md:mx-auto md:mt-6">
+      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-2xl md:mx-auto md:mt-6">
         <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
           <input placeholder="ПІБ відправника *" value={form.senderName} onChange={e => update('senderName', e.target.value)} className={inputCls('senderName')} />
           <input placeholder="Адреса відправки (ЄВ) *" value={form.senderAddr} onChange={e => update('senderAddr', e.target.value)} className={inputCls('senderAddr')} />

@@ -16,7 +16,7 @@ export default function TariffsScreen({ onNavigate }: Props) {
         <h1 className="text-xl font-bold text-white">Тарифи та ціни</h1>
       </div>
 
-      <div className="px-4 -mt-3 pb-6 space-y-4 md:px-10 md:mt-6 md:max-w-5xl md:mx-auto md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
+      <div className="px-4 -mt-3 pb-6 space-y-4 md:px-10 md:mt-6 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
         {/* Passengers */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <h2 className="text-base font-bold text-navy mb-3">Пасажири</h2>
