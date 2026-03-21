@@ -76,8 +76,8 @@ function App() {
   };
 
   return (
-    <div className="max-w-[480px] mx-auto min-h-screen bg-slate-100 relative">
-      <div className={showTabBar ? 'pb-16' : ''}>
+    <div className={`mx-auto min-h-screen bg-slate-100 relative max-w-[480px] ${showTabBar ? 'md:max-w-none md:ml-56' : ''}`}>
+      <div className={showTabBar ? 'pb-16 md:pb-0' : ''}>
         {renderScreen()}
       </div>
       {showTabBar && <TabBar active={activeTab} onTab={handleTabChange} chatBadge={chatBadge} />}

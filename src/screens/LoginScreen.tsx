@@ -89,7 +89,7 @@ export default function LoginScreen({ onLogin }: Props) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy to-navy-dark flex flex-col items-center justify-center px-6">
-      <div className="w-full max-w-sm animate-fade-in">
+      <div className="w-full max-w-sm md:max-w-md animate-fade-in">
         <div className="flex flex-col items-center mb-10">
           <div className="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-accent/30">
             <Truck size={40} className="text-white" />

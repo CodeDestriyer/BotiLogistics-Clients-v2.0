@@ -13,7 +13,7 @@ export default function ProfileScreen({ onNavigate, onLogout }: Props) {
 
   return (
     <div className="animate-fade-in">
-      <div className="bg-navy px-4 pt-6 pb-8 rounded-b-3xl">
+      <div className="bg-navy px-4 pt-6 pb-8 rounded-b-3xl md:rounded-none md:px-10 md:pt-8 md:pb-8">
         <button onClick={() => onNavigate('home')} className="text-blue-200/60 flex items-center gap-1 mb-4 text-sm">
           <ArrowLeft size={16} /> Назад
         </button>
@@ -28,7 +28,7 @@ export default function ProfileScreen({ onNavigate, onLogout }: Props) {
         </div>
       </div>
 
-      <div className="px-4 -mt-4 pb-6 space-y-3">
+      <div className="px-4 -mt-4 pb-6 space-y-3 md:max-w-lg md:mx-auto md:mt-6">
         {/* Debts */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <div className="flex items-center gap-3">

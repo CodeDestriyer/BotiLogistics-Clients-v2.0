@@ -37,7 +37,7 @@ export default function BookingScreen({ flight, onNavigate }: Props) {
 
   return (
     <div className="animate-fade-in">
-      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl">
+      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl md:rounded-none md:px-10 md:pt-8 md:pb-6">
         <button onClick={() => onNavigate('flights')} className="text-blue-200/60 flex items-center gap-1 mb-3 text-sm">
           <ArrowLeft size={16} /> Назад
         </button>
@@ -46,7 +46,7 @@ export default function BookingScreen({ flight, onNavigate }: Props) {
         </h1>
       </div>
 
-      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3">
+      <form onSubmit={handleSubmit} className="px-4 -mt-3 pb-6 space-y-3 md:max-w-xl md:mx-auto md:mt-6">
         <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
           <input placeholder="ПІБ пасажира *" value={form.name} onChange={e => update('name', e.target.value)} className={inputCls('name')} />
           <input placeholder="Телефон *" type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} className={inputCls('phone')} />

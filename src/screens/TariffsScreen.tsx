@@ -9,14 +9,14 @@ interface Props {
 export default function TariffsScreen({ onNavigate }: Props) {
   return (
     <div className="animate-fade-in">
-      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl">
+      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl md:rounded-none md:px-10 md:pt-8 md:pb-6">
         <button onClick={() => onNavigate('home')} className="text-blue-200/60 flex items-center gap-1 mb-3 text-sm">
           <ArrowLeft size={16} /> Назад
         </button>
         <h1 className="text-xl font-bold text-white">Тарифи та ціни</h1>
       </div>
 
-      <div className="px-4 -mt-3 pb-6 space-y-4">
+      <div className="px-4 -mt-3 pb-6 space-y-4 md:px-10 md:mt-6 md:max-w-5xl md:mx-auto md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
         {/* Passengers */}
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <h2 className="text-base font-bold text-navy mb-3">Пасажири</h2>

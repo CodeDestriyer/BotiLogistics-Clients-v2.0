@@ -22,10 +22,11 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
 
   return (
     <div className="animate-fade-in">
-      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl">
-        <h1 className="text-xl font-bold text-white mb-4">Поїздки</h1>
+      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl md:rounded-none md:px-10 md:pt-8 md:pb-6">
+        <div className="md:max-w-5xl md:mx-auto">
+        <h1 className="text-xl md:text-2xl font-bold text-white mb-4">Поїздки</h1>
         {/* Filters */}
-        <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
+        <div className="flex gap-2 mb-3 overflow-x-auto md:overflow-visible md:flex-wrap pb-1">
           {(['all', 'УК→ЄВ', 'ЄВ→УК'] as const).map(d => (
             <button
               key={d}
@@ -38,7 +39,7 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
             </button>
           ))}
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-1">
+        <div className="flex gap-2 overflow-x-auto md:overflow-visible md:flex-wrap pb-1">
           <button
             onClick={() => setCity('all')}
             className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${
@@ -59,9 +60,10 @@ export default function FlightsScreen({ onNavigate, onSelectFlight }: Props) {
             </button>
           ))}
         </div>
+        </div>
       </div>
 
-      <div className="px-4 -mt-3 pb-4 space-y-3">
+      <div className="px-4 -mt-3 pb-4 space-y-3 md:px-10 md:mt-4 md:max-w-5xl md:mx-auto md:grid md:grid-cols-2 md:gap-4 md:space-y-0">
         {filtered.map(flight => (
           <div key={flight.id} className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-start justify-between mb-2">

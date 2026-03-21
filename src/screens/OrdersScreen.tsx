@@ -7,9 +7,10 @@ export default function OrdersScreen() {
 
   return (
     <div className="animate-fade-in">
-      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl">
-        <h1 className="text-xl font-bold text-white mb-4">Мої замовлення</h1>
-        <div className="flex gap-2">
+      <div className="bg-navy px-4 pt-6 pb-5 rounded-b-3xl md:rounded-none md:px-10 md:pt-8 md:pb-6">
+        <div className="md:max-w-5xl md:mx-auto">
+        <h1 className="text-xl md:text-2xl font-bold text-white mb-4">Мої замовлення</h1>
+        <div className="flex gap-2 md:max-w-xs">
           {(['flights', 'parcels'] as const).map(t => (
             <button
               key={t}
@@ -22,9 +23,10 @@ export default function OrdersScreen() {
             </button>
           ))}
         </div>
+        </div>
       </div>
 
-      <div className="px-4 -mt-3 pb-4 space-y-3">
+      <div className="px-4 -mt-3 pb-4 space-y-3 md:px-10 md:mt-4 md:max-w-5xl md:mx-auto md:grid md:grid-cols-2 md:gap-4 md:space-y-0">
         {tab === 'flights' ? (
           <>
             <div className="bg-white rounded-2xl p-4 shadow-sm">

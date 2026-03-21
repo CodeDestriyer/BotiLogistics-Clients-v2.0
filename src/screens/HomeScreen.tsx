@@ -9,11 +9,11 @@ export default function HomeScreen({ onNavigate }: Props) {
   return (
     <div className="animate-fade-in">
       {/* Header */}
-      <div className="bg-navy px-5 pt-8 pb-6 rounded-b-3xl">
-        <div className="flex items-center justify-between">
+      <div className="bg-navy px-5 pt-8 pb-6 rounded-b-3xl md:rounded-none md:px-10 md:pt-10 md:pb-8">
+        <div className="flex items-center justify-between md:max-w-5xl md:mx-auto">
           <div>
-            <p className="text-blue-200/50 text-xs mb-0.5">Доброго дня</p>
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">Привіт, Олена! 👋</h1>
+            <p className="text-blue-200/50 text-xs md:text-sm mb-0.5">Доброго дня</p>
+            <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Привіт, Олена! 👋</h1>
           </div>
           <button
             onClick={() => onNavigate('profile')}
@@ -25,12 +25,12 @@ export default function HomeScreen({ onNavigate }: Props) {
       </div>
 
       {/* 4 Action Cards */}
-      <div className="px-4 mt-5 space-y-4 pb-4">
-        {/* Row 1 — Main actions (tall, prominent) */}
-        <div className="grid grid-cols-2 gap-4">
+      <div className="px-4 mt-5 space-y-4 pb-4 md:px-10 md:mt-8 md:max-w-5xl md:mx-auto">
+        {/* All cards — 2 cols mobile, 4 cols desktop */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           <button
             onClick={() => onNavigate('flights')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[280px] md:p-8 md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
             <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
               <Bus size={34} className="text-accent" />
@@ -43,7 +43,7 @@ export default function HomeScreen({ onNavigate }: Props) {
 
           <button
             onClick={() => onNavigate('parcels')}
-            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl p-7 text-left active:scale-[0.97] transition-transform flex flex-col justify-between min-h-[260px] md:min-h-[280px] md:p-8 md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
             <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
               <Package size={34} className="text-accent" />
@@ -53,36 +53,35 @@ export default function HomeScreen({ onNavigate }: Props) {
               <p className="text-gray-400 text-sm mt-2">Доставка УК ↔ ЄВ</p>
             </div>
           </button>
-        </div>
 
-        {/* Row 2 — Secondary actions */}
-        <div className="grid grid-cols-2 gap-4">
           <button
             onClick={() => onNavigate('chat')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-8 md:min-h-[280px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <MessageCircle size={22} className="text-accent" />
+            <div className="w-11 h-11 md:w-16 md:h-16 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+              <MessageCircle size={22} className="text-accent md:hidden" />
+              <MessageCircle size={34} className="text-accent hidden md:block" />
             </div>
-            <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-xs sm:text-sm leading-tight">Чат з менеджером</p>
-              <div className="flex items-center gap-1 mt-1">
-                <span className="w-1.5 h-1.5 bg-status-confirmed rounded-full" />
-                <span className="text-[10px] sm:text-xs text-gray-400">Онлайн</span>
+            <div className="text-left min-w-0 md:mt-auto md:pt-5">
+              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-lg leading-tight">Чат з менеджером</p>
+              <div className="flex items-center gap-1 mt-1 md:mt-2">
+                <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-status-confirmed rounded-full" />
+                <span className="text-[10px] sm:text-xs md:text-sm text-gray-400">Онлайн</span>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('tariffs')}
-            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px]"
+            className="bg-white border-2 border-navy/80 rounded-2xl px-4 py-4 active:scale-[0.97] transition-transform flex items-center gap-3 min-h-[90px] md:flex-col md:items-start md:p-8 md:min-h-[280px] md:justify-between md:hover:shadow-lg md:hover:border-accent md:transition-all"
           >
-            <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
-              <Tag size={22} className="text-accent" />
+            <div className="w-11 h-11 md:w-16 md:h-16 bg-accent/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+              <Tag size={22} className="text-accent md:hidden" />
+              <Tag size={34} className="text-accent hidden md:block" />
             </div>
-            <div className="text-left min-w-0">
-              <p className="text-navy font-bold text-xs sm:text-sm leading-tight">Тарифи та ціни</p>
-              <p className="text-gray-400 text-[10px] sm:text-xs mt-1">від 5€/кг</p>
+            <div className="text-left min-w-0 md:mt-auto md:pt-5">
+              <p className="text-navy font-bold text-xs sm:text-sm md:font-extrabold md:text-lg leading-tight">Тарифи та ціни</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 md:mt-2">від 5€/кг</p>
             </div>
           </button>
         </div>
