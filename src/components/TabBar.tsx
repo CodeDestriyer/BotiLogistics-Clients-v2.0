@@ -50,7 +50,7 @@ export default function TabBar({ active, onTab, chatBadge }: TabBarProps) {
           <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center">
             <Truck size={22} className="text-white" />
           </div>
-          <span className="text-white font-extrabold text-lg tracking-tight">BOTI<span className="font-extrabold">LOGISTICS</span> <em className="font-normal text-white/60 text-sm">beta</em></span>
+          <span className="font-extrabold text-lg tracking-tight"><span className="text-white">BOTI</span><span className="text-emerald-400">LOGISTICS</span> <em className="font-normal text-white/60 text-sm">beta</em></span>
         </div>
         <div className="flex flex-col gap-1 px-3 flex-1">
           {tabs.map(({ id, label, icon: Icon }) => {
