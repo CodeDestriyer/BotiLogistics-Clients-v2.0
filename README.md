@@ -1,4 +1,4 @@
-# BOTILOGISTICS *beta*
+# BOTILOGISTICS
 
 Клієнтський додаток логістичної компанії **BOTILOGISTICS** — бронювання пасажирських рейсів та відправка посилок між Україною та Європою.
 
@@ -87,6 +87,6 @@ src/
 
 - **Mobile-first**: весь UI оптимізований для телефонів, потім адаптується для desktop
 - **Skeleton loader**: при першому завантаженні показується анімований скелетон
-- **Анімований login**: demo-режим з автоматичним друком логіну/пароля
+- **Login**: форма входу та реєстрації
 - **Responsive cards**: 2 колонки на мобільних, 4 на desktop (Home), 2-3 колонки grid на інших
-- **Брендинг**: BOTILOGISTICS *beta* — у header, sidebar та на login
+- **Брендинг**: BOTILOGISTICS — у header, sidebar та на login
