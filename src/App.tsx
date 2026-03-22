@@ -91,12 +91,14 @@ function App() {
 
   const clearChatBadge = useCallback(() => setChatBadge(0), []);
 
-  const showTabBar = screen !== 'login';
+  const showTabBar = screen !== 'login' && screen !== 'verify';
 
   const renderScreen = () => {
     if (loading && tabScreens.includes(screen as Tab)) return <Skeleton />;
     switch (screen) {
-      case 'login': return <LoginScreen onLogin={handleLogin} />;
+      case 'login':
+      case 'verify':
+        return <LoginScreen onLogin={handleLogin} onNavigate={(s) => setScreen(s)} screen={screen as 'login' | 'verify'} />;
       case 'home': return <HomeScreen onNavigate={navigate} />;
       case 'flights': return <FlightsScreen onNavigate={navigate} onSelectFlight={setSelectedFlight} />;
       case 'booking': return selectedFlight ? <BookingScreen flight={selectedFlight} onNavigate={navigate} /> : null;
