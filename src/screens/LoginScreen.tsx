@@ -1,131 +1,170 @@
-import { useState, useEffect, useRef } from 'react';
-import { Truck } from 'lucide-react';
+import { useState } from 'react';
+import { Truck, Mail, ArrowLeft, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 interface Props {
   onLogin: () => void;
+  onNavigate: (screen: 'login' | 'verify') => void;
+  screen: 'login' | 'verify';
 }
 
-const DEMO_PHONE = '+380951111111';
-const DEMO_PASSWORD = 'mypassword1';
-const TYPE_SPEED = 70;       // ms per character
-const PAUSE_BETWEEN = 400;   // pause between fields
-const BUTTON_DELAY = 500;    // pause before button press
-const BUTTON_HOLD = 600;     // how long button stays "pressed"
+export default function LoginScreen({ onLogin, onNavigate, screen }: Props) {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-export default function LoginScreen({ onLogin }: Props) {
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [phoneFocused, setPhoneFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
-  const [buttonPressed, setButtonPressed] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const inputClass =
+    'w-full px-4 py-3.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-blue-200/50 outline-none transition-all duration-200 focus:border-accent focus:ring-1 focus:ring-accent';
 
-  useEffect(() => {
-    // Reset state for each mount
-    setPhone('');
-    setPassword('');
-    setPhoneFocused(false);
-    setPasswordFocused(false);
-    setButtonPressed(false);
+  const handleSendMagicLink = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    const addTimer = (fn: () => void, delay: number) => {
-      const t = setTimeout(fn, delay);
-      timers.push(t);
-      return t;
-    };
-
-    let elapsed = 300; // initial delay
-
-    // Focus phone field
-    addTimer(() => setPhoneFocused(true), elapsed);
-    elapsed += 200;
-
-    // Type phone number
-    for (let i = 0; i < DEMO_PHONE.length; i++) {
-      const chars = DEMO_PHONE.slice(0, i + 1);
-      addTimer(() => setPhone(chars), elapsed);
-      elapsed += TYPE_SPEED;
+    if (!email.trim()) {
+      setError('Введіть електронну пошту');
+      return;
     }
 
-    // Unfocus phone, pause, focus password
-    elapsed += PAUSE_BETWEEN;
-    addTimer(() => {
-      setPhoneFocused(false);
-      setPasswordFocused(true);
-    }, elapsed);
-    elapsed += 200;
+    setLoading(true);
+    const { error: authError } = await supabase.auth.signInWithOtp({
+      email: email.trim(),
+      options: {
+        shouldCreateUser: true,
+      },
+    });
+    setLoading(false);
 
-    // Type password
-    for (let i = 0; i < DEMO_PASSWORD.length; i++) {
-      const chars = DEMO_PASSWORD.slice(0, i + 1);
-      addTimer(() => setPassword(chars), elapsed);
-      elapsed += TYPE_SPEED;
+    if (authError) {
+      setError(authError.message);
+      return;
     }
 
-    // Unfocus password
-    elapsed += PAUSE_BETWEEN;
-    addTimer(() => setPasswordFocused(false), elapsed);
+    onNavigate('verify');
+  };
 
-    // Press button
-    elapsed += BUTTON_DELAY;
-    addTimer(() => setButtonPressed(true), elapsed);
+  const handleGoogleLogin = async () => {
+    const { error: authError } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin,
+      },
+    });
+    if (authError) {
+      setError(authError.message);
+    }
+  };
 
-    // Release button and navigate
-    elapsed += BUTTON_HOLD;
-    addTimer(() => {
-      setButtonPressed(false);
-      onLogin();
-    }, elapsed);
+  // Step 2: Check your email screen
+  if (screen === 'verify') {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-navy to-navy-dark flex flex-col items-center justify-center px-6">
+        <div className="w-full max-w-sm md:max-w-md animate-fade-in">
+          <div className="flex flex-col items-center mb-10">
+            <div className="w-20 h-20 md:w-28 md:h-28 bg-emerald-500 rounded-2xl md:rounded-3xl flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/30">
+              <Mail size={40} className="text-white md:hidden" />
+              <Mail size={56} className="text-white hidden md:block" />
+            </div>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-3">Перевірте пошту</h2>
+            <p className="text-blue-200/70 text-sm md:text-base text-center leading-relaxed">
+              Ми надіслали посилання для входу на
+            </p>
+            <p className="text-accent font-semibold mt-1">{email}</p>
+            <p className="text-blue-200/50 text-sm text-center mt-4 leading-relaxed">
+              Перейдіть за посиланням у листі,<br />щоб увійти в додаток
+            </p>
+          </div>
 
-    timerRef.current = timers;
-    return () => timers.forEach(clearTimeout);
-  }, [onLogin]);
+          <p className="text-center text-blue-200/40 text-xs">
+            Якщо листа немає — перевірте папку «Спам»
+          </p>
 
-  const inputBase =
-    'w-full px-4 py-3.5 bg-white/10 backdrop-blur border rounded-xl text-white placeholder-blue-200/50 outline-none transition-all duration-200';
-  const focusRing = 'border-accent ring-1 ring-accent';
-  const noFocus = 'border-white/20';
+          <button
+            type="button"
+            onClick={() => {
+              setError('');
+              onNavigate('login');
+            }}
+            className="w-full inline-flex items-center justify-center gap-2 text-blue-200/60 text-sm hover:text-white transition-colors pt-6"
+          >
+            <ArrowLeft size={16} />
+            Змінити пошту
+          </button>
+        </div>
+      </div>
+    );
+  }
 
+  // Step 1: Email input + Google
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy to-navy-dark flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-sm md:max-w-md animate-fade-in">
         <div className="flex flex-col items-center mb-10">
-          <div className="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-accent/30">
-            <Truck size={40} className="text-white" />
+          <div className="w-20 h-20 md:w-40 md:h-40 bg-accent rounded-2xl md:rounded-3xl flex items-center justify-center mb-4 md:mb-6 shadow-lg shadow-accent/30">
+            <Truck size={40} className="text-white md:hidden" />
+            <Truck size={80} className="text-white hidden md:block" />
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight"><span className="text-white">BOTI</span><span className="text-emerald-400">LOGISTICS</span> <em className="font-normal text-white/70">beta</em></h1>
-          <p className="text-blue-200/70 text-sm mt-1">Логістика без кордонів</p>
+          <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight">
+            <span className="text-white">BOTI</span>
+            <span className="text-emerald-400">LOGISTICS</span>
+          </h1>
+          <p className="text-blue-200/70 text-sm md:text-base mt-1">Логістика без кордонів</p>
         </div>
 
-        <div className="space-y-4">
+        <form onSubmit={handleSendMagicLink} className="space-y-4">
           <div>
             <input
-              type="tel"
-              placeholder="Телефон"
-              value={phone}
-              readOnly
-              className={`${inputBase} ${phoneFocused ? focusRing : noFocus}`}
+              type="email"
+              placeholder="Електронна пошта"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setError(''); }}
+              className={inputClass}
+              autoComplete="email"
+              autoFocus
             />
+            {error && (
+              <p className="text-red-400 text-xs mt-2 pl-1">{error}</p>
+            )}
           </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Пароль"
-              value={password}
-              readOnly
-              className={`${inputBase} ${passwordFocused ? focusRing : noFocus}`}
-            />
-          </div>
+
           <button
-            type="button"
-            className={`w-full py-3.5 bg-accent text-white font-bold rounded-xl text-base shadow-lg shadow-accent/30 transition-all duration-150 ${
-              buttonPressed ? 'scale-[0.95] brightness-90 shadow-accent/50' : 'scale-100'
-            }`}
+            type="submit"
+            disabled={loading}
+            className="w-full py-3.5 bg-accent text-white font-bold rounded-xl text-base shadow-lg shadow-accent/30 active:scale-[0.97] transition-all duration-150 disabled:opacity-60 disabled:active:scale-100 flex items-center justify-center gap-2"
           >
-            Увійти
+            {loading ? (
+              <>
+                <Loader2 size={20} className="animate-spin" />
+                Надсилаємо посилання...
+              </>
+            ) : (
+              'Продовжити'
+            )}
           </button>
+        </form>
+
+        <div className="flex items-center gap-3 my-6">
+          <div className="flex-1 h-px bg-white/10" />
+          <span className="text-blue-200/40 text-xs">або</span>
+          <div className="flex-1 h-px bg-white/10" />
         </div>
+
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="w-full py-3.5 bg-white text-gray-700 font-semibold rounded-xl text-base shadow-lg active:scale-[0.97] transition-all duration-150 flex items-center justify-center gap-3"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Увійти через Google
+        </button>
+
+        <p className="text-center text-blue-200/40 text-xs mt-6">
+          Введіть пошту — ми надішлемо вам посилання для входу
+        </p>
       </div>
     </div>
   );
